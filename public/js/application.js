@@ -1,7 +1,16 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+var IndexView = {
+  init: function() {
+  	$('.sign-up-button').on("click", function(e){
+  	  e.preventDefault();
+  	  var url = $('.sign-up-button').attr('href')
+  	  $.get(url, function(response){
+  	  	$('.sign_in_form').append(response)
+  	  });
+  	});
+  }
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+}
+
+$(document).ready(function() {
+  IndexView.init();
 });

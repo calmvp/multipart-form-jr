@@ -1,0 +1,12 @@
+<div class="container">
+  <% if !@photos.empty? %>	
+  <% @photos.each do |photo| %>
+    <div class="image-display">
+      <img src="<%= photo.image.url %>" title="<%= photo.title %>">
+      <p><%= photo.user.name %></p>
+    </div>
+  <% end %>
+  <% end %>
+  <br>
+  <a href="/new">Add an Album</a>
+</div>
