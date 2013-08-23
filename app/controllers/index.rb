@@ -1,5 +1,6 @@
 get '/' do
   @users = User.all
+  @photos = Photo.all
   erb :index
 end
 
@@ -8,9 +9,9 @@ get '/new' do
 end
 
 post '/' do
-  puts request.body.read
-  user = User.new(params[:user])
-  if user.save
+  user = User.new(params[:user]) 
+  user.albums.photos << Photo.create(params[:photo])
+  if user.save 
   	redirect to '/'
   else
   	erb :new
